@@ -1,6 +1,6 @@
 const OutputView = require('./View/OutputView');
 const InputView = require('./View/InputView');
-const Validator = require('../utils/Vaiidator');
+const Validator = require('../utils/Validator');
 
 class Controller {
   play() {
@@ -13,7 +13,7 @@ class Controller {
   }
 
   handleNames(names) {
-    if (!Validator.validateCoachName(names));
+    if (!Validator.validateCoachName(names)) this.readCoachNames();
   }
 }
 
