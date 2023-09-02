@@ -15,6 +15,11 @@ const CONSTANTS = Object.freeze({
   OutputDivision: ' | ',
   linebreak: '\n',
   inputDivision: ',',
+  minNameLength: 2,
+  maxNameLength: 4,
+  maxMenuCantEat: 2,
+  minCoachCount: 2,
+  maxCoachCount: 5,
 });
 
 const MENUS = Object.freeze({
