@@ -1,5 +1,5 @@
 const handleError = require('./handleError');
-const { ERROR_MESSAGE, CONSTANTS } = require('./Constant');
+const { ERROR_MESSAGE, CONSTANTS, totalMenus } = require('./Constant');
 
 const Validator = {
   validateCoachName(names) {
@@ -17,6 +17,16 @@ const Validator = {
     }
     if (names.split(',').length < CONSTANTS.minCoachCount) {
       return handleError(ERROR_MESSAGE.minCoachCount);
+    }
+    return true;
+  },
+  validateMenuCantEat(menus) {
+    if (menus === '') return true;
+    if (menus.split(',').length > CONSTANTS.maxMenuCantEat) {
+      return handleError(ERROR_MESSAGE.maxMenuCantEat);
+    }
+    if (!menus.split(',').every((menu) => totalMenus.includes(menu))) {
+      return handleError(ERROR_MESSAGE.notMenuInCategory);
     }
     return true;
   },

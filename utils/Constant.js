@@ -31,6 +31,11 @@ const MENUS = Object.freeze({
   양식: '라자냐, 그라탱, 뇨끼, 끼슈, 프렌치 토스트, 바게트, 스파게티, 피자, 파니니',
 });
 
+const totalMenus = Object.entries(MENUS)
+  .map((menu) => menu[1].split(', ').join(','))
+  .join(',')
+  .split(',');
+
 const ERROR_MESSAGE = Object.freeze({
   minNameLength: `${PREFIX}코치의 이름은 최소 2글자 이상 입력해야 합니다.`,
   maxNameLength: `${PREFIX}코치의 이름은 최대 4글자 이하로 입력해야 합니다.`,
@@ -45,4 +50,5 @@ module.exports = {
   CONSTANTS,
   MENUS,
   ERROR_MESSAGE,
+  totalMenus,
 };
