@@ -11,7 +11,7 @@ const InputView = {
       if (!Validator.validateMenuCantEat(menu)) {
         return this.readMenuCantEat(coach);
       }
-      coach.addMenuCantEat(menu);
+      return coach.addMenuCantEat(menu);
     });
   },
 };

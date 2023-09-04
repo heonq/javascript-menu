@@ -1,6 +1,6 @@
 const { Random } = require('@woowacourse/mission-utils');
 const Coach = require('./Coach');
-const { CONSTANTS } = require('../utils/Constant');
+const { CONSTANTS, MENUS } = require('../utils/Constant');
 
 class MenuRecommendation {
   #coaches;
@@ -33,8 +33,19 @@ class MenuRecommendation {
     }
   }
 
-  printMenusCantEat() {
-    return this.#coaches.map((coach) => coach.getMenuCantEat());
+  shuffleMenu(menu) {
+    return Random.shuffle(menu)[0];
+  }
+
+  getMenu(coach) {
+    this.#category.forEach((category) => {
+      const menu = this.shuffleMenu(MENUS[category].split(', '));
+      if (!coach.checkMenu(menu)) this.getMenu(coach);
+    });
+  }
+
+  getMenuForCoaches() {
+    this.#coaches.forEach((coach) => this.getMenu(coach));
   }
 }
 
