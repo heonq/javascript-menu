@@ -13,6 +13,7 @@ class Controller {
   play() {
     OutputView.printIntro();
     this.readCoachNames();
+    this.readMenuCantEat();
   }
 
   readCoachNames() {
@@ -21,6 +22,12 @@ class Controller {
 
   handleNames(names) {
     if (!Validator.validateCoachName(names)) this.readCoachNames();
+    this.#menuRecommendation.generateCoaches(names);
+  }
+
+  readMenuCantEat() {
+    const coaches = this.#menuRecommendation.getCoaches();
+    coaches.forEach((coach) => InputView.readMenuCantEat(coach));
   }
 }
 
