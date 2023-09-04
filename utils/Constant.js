@@ -32,7 +32,7 @@ const MENUS = Object.freeze({
 });
 
 const totalMenus = Object.entries(MENUS)
-  .map((menu) => menu[1].split(', ').join(','))
+  .map((menu) => menu[1].replaceAll(', ', ','))
   .join(',')
   .split(',');
 
