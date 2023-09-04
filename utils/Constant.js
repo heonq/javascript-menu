@@ -7,7 +7,6 @@ const MESSAGE = Object.freeze({
   result: '메뉴 추천 결과입니다.\n',
   dayRow: '[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]\n',
   end: '추천을 완료했습니다.\n',
-  category: ['일식', '한식', '중식', '아시안', '양식'],
 });
 
 const CONSTANTS = Object.freeze({
@@ -21,6 +20,7 @@ const CONSTANTS = Object.freeze({
   maxMenuCantEat: 2,
   minCoachCount: 2,
   maxCoachCount: 5,
+  category: ['일식', '한식', '중식', '아시안', '양식'],
 });
 
 const MENUS = Object.freeze({

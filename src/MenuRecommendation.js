@@ -26,7 +26,7 @@ class MenuRecommendation {
 
   getRandomCategory() {
     while (this.#category.length < 5) {
-      const currentCategory = CONSTANTS.menus[Random.pickNumberInRange(1, 5) - 1];
+      const currentCategory = CONSTANTS.category[Random.pickNumberInRange(1, 5) - 1];
       if (this.#category.filter((category) => category === currentCategory).length < 2) {
         this.#category.push(currentCategory);
       }
