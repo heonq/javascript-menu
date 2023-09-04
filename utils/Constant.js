@@ -21,6 +21,7 @@ const CONSTANTS = Object.freeze({
   minCoachCount: 2,
   maxCoachCount: 5,
   category: ['일식', '한식', '중식', '아시안', '양식'],
+  categroyStr: '카테고리',
 });
 
 const MENUS = Object.freeze({

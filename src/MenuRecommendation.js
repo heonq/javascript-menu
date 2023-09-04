@@ -1,4 +1,4 @@
-const { Random } = require('@woowacourse/mission-utils');
+const MissionUtils = require('@woowacourse/mission-utils');
 const Coach = require('./Coach');
 const { CONSTANTS, MENUS } = require('../utils/Constant');
 
@@ -26,26 +26,39 @@ class MenuRecommendation {
 
   getRandomCategory() {
     while (this.#category.length < 5) {
-      const currentCategory = CONSTANTS.category[Random.pickNumberInRange(1, 5) - 1];
+      const currentCategory = CONSTANTS.category[MissionUtils.Random.pickNumberInRange(1, 5) - 1];
       if (this.#category.filter((category) => category === currentCategory).length < 2) {
         this.#category.push(currentCategory);
       }
     }
   }
 
-  shuffleMenu(menu) {
-    return Random.shuffle(menu)[0];
+  shuffleMenu(category, coach) {
+    const menus = MENUS[category].split(', ');
+    const index = MissionUtils.Random.shuffle(menus)[0];
+    const recommendMenu = menus[index - 1];
+    return coach.checkMenu(recommendMenu);
   }
 
   getMenu(coach) {
     this.#category.forEach((category) => {
-      const menu = this.shuffleMenu(MENUS[category].split(', '));
-      if (!coach.checkMenu(menu)) this.getMenu(coach);
+      if (!this.shuffleMenu(category, coach)) return this.shuffleMenu(category, coach);
     });
   }
 
   getMenuForCoaches() {
     this.#coaches.forEach((coach) => this.getMenu(coach));
+  }
+
+  getCategoryMessage() {
+    this.#category.unshift(CONSTANTS.categroyStr);
+    return (
+      CONSTANTS.startBraket +
+      this.#category.join(CONSTANTS.OutputDivision) +
+      CONSTANTS.endBraket +
+      CONSTANTS.linebreak +
+      this.#coaches.map((coach) => coach.getRecommendationMessage()).join(CONSTANTS.linebreak)
+    );
   }
 }
 

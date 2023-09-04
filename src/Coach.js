@@ -1,3 +1,5 @@
+const { CONSTANTS } = require('../utils/Constant');
+
 class Coach {
   #name;
 
@@ -31,6 +33,16 @@ class Coach {
     if (this.#menuCantEat.includes(menu) || this.#recommendedMenu.includes(menu)) return false;
     this.addMenu(menu);
     return true;
+  }
+
+  getRecommendationMessage() {
+    this.#recommendedMenu.unshift(this.#name);
+    return (
+      CONSTANTS.startBraket +
+      this.#recommendedMenu.join(CONSTANTS.OutputDivision) +
+      CONSTANTS.endBraket +
+      CONSTANTS.linebreak
+    );
   }
 }
 

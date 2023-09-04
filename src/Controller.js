@@ -14,6 +14,7 @@ class Controller {
     OutputView.printIntro();
     this.readCoachNames();
     this.readMenuCantEat();
+    this.getRecommendation();
   }
 
   readCoachNames() {
@@ -28,6 +29,12 @@ class Controller {
   readMenuCantEat() {
     const coaches = this.#menuRecommendation.getCoaches();
     coaches.forEach((coach) => InputView.readMenuCantEat(coach));
+  }
+
+  getRecommendation() {
+    this.#menuRecommendation.getRandomCategory();
+    this.#menuRecommendation.getMenuForCoaches();
+    OutputView.printResult(this.#menuRecommendation);
   }
 }
 
