@@ -1,8 +1,15 @@
 const OutputView = require('./View/OutputView');
 const InputView = require('./View/InputView');
 const Validator = require('../utils/Validator');
+const MenuRecommendation = require('./MenuRecommendation');
 
 class Controller {
+  #menuRecommendation;
+
+  constructor() {
+    this.#menuRecommendation = new MenuRecommendation();
+  }
+
   play() {
     OutputView.printIntro();
     this.readCoachNames();
