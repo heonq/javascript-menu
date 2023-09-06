@@ -57,7 +57,7 @@ class MenuRecommendation {
       this.#category.join(CONSTANTS.OutputDivision) +
       CONSTANTS.endBraket +
       CONSTANTS.linebreak +
-      this.#coaches.map((coach) => coach.getRecommendationMessage()).join(CONSTANTS.linebreak)
+      this.#coaches.map((coach) => coach.getRecommendationMessage()).join('')
     );
   }
 }
