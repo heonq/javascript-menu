@@ -28,7 +28,14 @@ class Controller {
 
   readMenuCantEat() {
     const coaches = this.#menuRecommendation.getCoaches();
-    coaches.forEach((coach) => InputView.readMenuCantEat(coach));
+    coaches.forEach((coach) => {
+      InputView.readMenuCantEat(coach, (menu) => this.handleMenuCantEat.bind(this, menu, coach));
+    });
+  }
+
+  handleMenuCantEat(menu, coach) {
+    if (!Validator.validateMenuCantEat(menu)) return this.readMenuCantEat();
+    return coach.checkMenu(menu);
   }
 
   getRecommendation() {
