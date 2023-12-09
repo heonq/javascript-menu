@@ -1,12 +1,16 @@
 import { Random } from '@woowacourse/mission-utils';
 import VALUES from '../constants/Values.js';
-import MESSAGES from '../constants/Messages';
+import MESSAGES from '../constants/Messages.js';
+import Coach from './Coach.js';
 
 class Menu {
   #categories;
 
-  constructor() {
+  #coaches;
+
+  constructor(coachesArray) {
     this.#categories = this.#pickCategories();
+    this.#coaches = coachesArray.map((coach) => new Coach(coach));
   }
 
   #pickCategories() {

@@ -6,10 +6,6 @@ import Menu from './Menu.js';
 class MenuController {
   #menu;
 
-  constructor() {
-    this.#menu = new Menu();
-  }
-
   async play() {
     OutputView.printIntro();
     await this.readCoaches();
@@ -23,6 +19,16 @@ class MenuController {
   async handleCoaches(coachesArray) {
     if (!Validator.validateCoaches(coachesArray)) return this.readCoaches();
     OutputView.printLineBreak();
+    this.#menu = new Menu(coachesArray);
+    this.readMenusCantEat(coachesArray);
+  }
+
+  async readMenusCantEat(coachesArray) {
+    const menusCantEatArray = [];
+    for (let i = 0; i < coachesArray.length; i += 1) {
+      menusCantEatArray.push(await InputView.readMenusCantEat(coachesArray[i]));
+      OutputView.printLineBreak();
+    }
   }
 }
 

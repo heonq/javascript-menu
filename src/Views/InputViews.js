@@ -6,6 +6,11 @@ const InputView = {
     const coaches = await Console.readLineAsync(MESSAGES.coachNameQuery);
     return coaches.split(MESSAGES.nameDelimiter);
   },
+
+  async readMenusCantEat(coachName) {
+    const menuCantEat = await Console.readLineAsync(coachName + MESSAGES.menusCantEatQuery);
+    return menuCantEat.split(MESSAGES.nameDelimiter);
+  },
 };
 
 export default InputView;
