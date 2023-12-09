@@ -1,5 +1,6 @@
 import InputView from './Views/InputViews.js';
 import OutputView from './Views/OutputViews.js';
+import Validator from '../Utils/Validator.js';
 
 class MenuController {
   async play() {
@@ -9,6 +10,12 @@ class MenuController {
 
   async readCoaches() {
     const coachesArray = await InputView.readCoaches();
+    this.handleCoaches(coachesArray);
+  }
+
+  async handleCoaches(coachesArray) {
+    if (!Validator.validateCoaches(coachesArray)) return this.readCoaches();
+    OutputView.printLineBreak();
   }
 }
 

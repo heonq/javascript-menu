@@ -5,6 +5,9 @@ const OutputView = {
   printLineBreak() {
     Console.print(MESSAGES.lineBreak);
   },
+  printError(error) {
+    Console.print(error);
+  },
 
   printIntro() {
     Console.print(MESSAGES.intro);
