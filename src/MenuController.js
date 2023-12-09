@@ -1,8 +1,15 @@
 import InputView from './Views/InputViews.js';
 import OutputView from './Views/OutputViews.js';
 import Validator from '../Utils/Validator.js';
+import Menu from './Menu.js';
 
 class MenuController {
+  #menu;
+
+  constructor() {
+    this.#menu = new Menu();
+  }
+
   async play() {
     OutputView.printIntro();
     await this.readCoaches();

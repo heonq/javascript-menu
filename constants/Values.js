@@ -6,6 +6,9 @@ const VALUES = Object.freeze({
   minimumMenuCount: 0,
   maximumMenuCount: 2,
   maximumCategoriesRepeat: 2,
+  categoriesCount: 5,
+  randomRangeStart: 1,
+  randomRangeEnd: 5,
 });
 
 export default VALUES;
