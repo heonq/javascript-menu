@@ -19,16 +19,27 @@ class MenuController {
   async handleCoaches(coachesArray) {
     if (!Validator.validateCoaches(coachesArray)) return this.readCoaches();
     OutputView.printLineBreak();
-    this.#menu = new Menu(coachesArray);
-    this.readMenusCantEat(coachesArray);
+    await this.generateCoaches(coachesArray);
   }
 
-  async readMenusCantEat(coachesArray) {
+  async generateCoaches(coachesArray) {
     const menusCantEatArray = [];
     for (let i = 0; i < coachesArray.length; i += 1) {
-      menusCantEatArray.push(await InputView.readMenusCantEat(coachesArray[i]));
-      OutputView.printLineBreak();
+      const menusCantEat = await this.readMenusCantEat(coachesArray[i]);
+      menusCantEatArray.push(menusCantEat);
     }
+    this.#menu = new Menu(coachesArray, menusCantEatArray);
+  }
+
+  async readMenusCantEat(coachName) {
+    const menusCantEat = await InputView.readMenusCantEat(coachName);
+    return this.handleMenusCantEat(menusCantEat, coachName);
+  }
+
+  async handleMenusCantEat(menusCantEat, coachName) {
+    if (!Validator.validateMenusCantEat(menusCantEat)) return this.readMenusCantEat(coachName);
+    OutputView.printLineBreak();
+    return menusCantEat;
   }
 }
 

@@ -18,7 +18,7 @@ const MESSAGES = Object.freeze({
   duplicated: `${PREFIX} 중복된 이름은 입력할 수 없습니다.`,
   invalidCoachCount: `${PREFIX} 코치는 2명 이상 5명 이하로 입력해 주세요.`,
   invalidMenuCount: `${PREFIX} 못 먹는 메뉴는 0개 이상 2개 이하로 입력해 주세요.`,
-  invalidMenu: `${PREFIX} 메뉴목록에 존재하는 메뉴를 입력해 주세요.`,
+  invalidMenu: `${PREFIX} 메뉴 목록에 존재하는 메뉴를 입력해 주세요.`,
 });
 
 export default MESSAGES;

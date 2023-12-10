@@ -8,9 +8,9 @@ class Menu {
 
   #coaches;
 
-  constructor(coachesArray) {
+  constructor(coachesArray, menusCantEat) {
     this.#categories = this.#pickCategories();
-    this.#coaches = coachesArray.map((coach) => new Coach(coach));
+    this.#coaches = coachesArray.map((coach, index) => new Coach(coach, menusCantEat[index]));
   }
 
   #pickCategories() {
