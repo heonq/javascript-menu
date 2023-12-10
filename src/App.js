@@ -1,3 +1,4 @@
+import { Random } from '@woowacourse/mission-utils';
 import MenuController from './MenuController.js';
 
 class App {
