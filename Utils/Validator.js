@@ -37,7 +37,10 @@ const Validator = {
     );
   },
   validateIncluded(menusCantEat) {
-    const totalMenus = Object.values(MENUS).join('').split(MESSAGES.nameDelimiter);
+    const totalMenus = Object.values(MENUS)
+      .map((menu) => menu.join(MESSAGES.nameDelimiter))
+      .join(MESSAGES.nameDelimiter)
+      .split(MESSAGES.nameDelimiter);
     return !menusCantEat.every((menuCantEat) => totalMenus.includes(menuCantEat));
   },
 };

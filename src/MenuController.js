@@ -29,6 +29,7 @@ class MenuController {
       menusCantEatArray.push(menusCantEat);
     }
     this.#menu = new Menu(coachesArray, menusCantEatArray);
+    this.printRecommendResult();
   }
 
   async readMenusCantEat(coachName) {
@@ -40,6 +41,10 @@ class MenuController {
     if (!Validator.validateMenusCantEat(menusCantEat)) return this.readMenusCantEat(coachName);
     OutputView.printLineBreak();
     return menusCantEat;
+  }
+
+  printRecommendResult() {
+    OutputView.printResult(this.#menu.getCategories(), this.#menu.getCoachInformations());
   }
 }
 

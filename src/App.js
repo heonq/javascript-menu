@@ -1,4 +1,3 @@
-import { Random } from '@woowacourse/mission-utils';
 import MenuController from './MenuController.js';
 
 class App {
@@ -8,6 +7,6 @@ class App {
 }
 
 const app = new App();
-await app.play();
+app.play();
 
 export default App;

@@ -10,15 +10,17 @@ class Menu {
 
   constructor(coachesArray, menusCantEat) {
     this.#categories = this.#pickCategories();
-    this.#coaches = coachesArray.map((coach, index) => new Coach(coach, menusCantEat[index]));
+    this.#coaches = coachesArray.map(
+      (coach, index) => new Coach(coach, menusCantEat[index], this.#categories),
+    );
   }
 
   #pickCategories() {
     const categories = [];
     while (categories.length < VALUES.categoriesCount) {
       const menuIndex = Random.pickNumberInRange(VALUES.randomRangeStart, VALUES.randomRangeEnd);
-      if (this.#checkCategoriesDuplicated(categories, menuIndex)) continue;
-      categories.push(MESSAGES.categories[menuIndex]);
+      if (!this.#checkCategoriesDuplicated(categories, menuIndex))
+        categories.push(MESSAGES.categories[menuIndex]);
     }
     return categories;
   }
@@ -28,6 +30,14 @@ class Menu {
       categories.filter((category) => category === MESSAGES.categories[menuIndex]).length >=
       VALUES.maximumCategoriesRepeat
     );
+  }
+
+  getCategories() {
+    return this.#categories;
+  }
+
+  getCoachInformations() {
+    return this.#coaches.map((coach) => coach.getCoachInformation());
   }
 }
 

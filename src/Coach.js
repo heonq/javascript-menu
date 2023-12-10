@@ -12,26 +12,30 @@ class Coach {
     this.#name = name;
     this.#menusCantEat = menusCantEat;
     this.#recommendedMenu = [];
-    this.recommendEveryday(categories);
+    this.#recommendEveryday(categories);
   }
 
-  recommendEveryday(categories) {
-    this.#recommendedMenu = categories.map((category) => this.recommendEachDay(category));
+  #recommendEveryday(categories) {
+    this.#recommendedMenu = categories.map((category) => this.#recommendEachDay(category));
   }
 
-  recommendEachDay(category) {
-    const randomMenu = this.getRandomMenu(category);
+  #recommendEachDay(category) {
+    const randomMenu = this.#getRandomMenu(category);
     if (this.#menusCantEat.includes(randomMenu) || this.#recommendedMenu.includes(randomMenu))
-      return this.recommendEachDay(category);
+      return this.#recommendEachDay(category);
     return randomMenu;
   }
 
-  getRandomMenu(category) {
+  #getRandomMenu(category) {
     const menus = MENUS[category];
     const shuffledIndex = Random.shuffle(
       Array.from({ length: menus.length }, (_, index) => index),
     )[0];
     return menus[shuffledIndex];
+  }
+
+  getCoachInformation() {
+    return [this.#name, ...this.#recommendedMenu];
   }
 }
 
