@@ -22,7 +22,7 @@ class Coach {
   recommendEachDay(category) {
     const randomMenu = this.getRandomMenu(category);
     if (this.#menusCantEat.includes(randomMenu) || this.#recommendedMenu.includes(randomMenu))
-      return this.recommend();
+      return this.recommendEachDay(category);
     return randomMenu;
   }
 
